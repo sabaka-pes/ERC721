@@ -7,7 +7,7 @@ import "./IERC721Metadata.sol";
 import "./Strings.sol";
 import "./IERC721Receiver.sol";
 
-contract ERC721 is IERC721, IERC721Metadata {
+contract ERC721 is ERC165, IERC721, IERC721Metadata {
     using Strings for uint;
 
     string private _name;
@@ -91,6 +91,12 @@ contract ERC721 is IERC721, IERC721Metadata {
 
     function isApprovedForAll(address owner, address operator) public view returns(bool) {
         return _operatorApprovals[owner][operator];
+    }
+
+    function supportInterface(bytes4 interfaceId) public view virtual override returns(bool) {
+        return interfaceId == type(IERC721).interfaceId || 
+            interfaceId == type(IERC721Metadata).interfaceId ||
+            super.supportsInterface(interfaceId);
     }
 
     function _safeMint(address to, uint tokenId) internal virtual {
