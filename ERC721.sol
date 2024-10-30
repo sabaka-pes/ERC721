@@ -93,7 +93,7 @@ contract ERC721 is ERC165, IERC721, IERC721Metadata {
         return _operatorApprovals[owner][operator];
     }
 
-    function supportInterface(bytes4 interfaceId) public view virtual override returns(bool) {
+    function supportInterface(bytes4 interfaceId) public view virtual returns(bool) {
         return interfaceId == type(IERC721).interfaceId || 
             interfaceId == type(IERC721Metadata).interfaceId ||
             super.supportsInterface(interfaceId);
