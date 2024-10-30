@@ -21,8 +21,8 @@ contract ERC721URIStorage is ERC721 {
         return super.tokenURI(tokenId);
     }
     
-    function _setTokenURI(uint tokenId, string memory tokenURI) internal virtual _requireMinted(tokenId) {
-        _tokenURIs[tokenId] = tokenURI;
+    function _setTokenURI(uint tokenId, string memory _tokenURI) internal virtual _requireMinted(tokenId) {
+        _tokenURIs[tokenId] = _tokenURI;
     }
 
     function _burn(uint tokenId) internal virtual override {
