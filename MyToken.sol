@@ -22,6 +22,11 @@ contract MyToken is ERC721, ERC721Enumerable, ERC721URIStorage {
         currentTokenId++;
     }
 
+    function supportInterface(bytes4 interfaceId) public view virtual override(ERC721, ERC721Enumerable) returns(bool) {
+        return interfaceId == type(IERC721Enumerable).interfaceId || 
+            super.supportsInterface(interfaceId);
+    }
+
     function _baseURI() internal pure override returns(string memory) {
         return "ipfs://";
     }
