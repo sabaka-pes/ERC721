@@ -140,7 +140,7 @@ contract ERC721 is IERC721, IERC721Metadata {
         return "";
     }
 
-    function tokenURI(uint tokenId) external view _requireMinted(tokenId) returns(string memory) {
+    function tokenURI(uint tokenId) public view virtual _requireMinted(tokenId) returns(string memory) {
         string memory baseURI = _baseURI();
 
         return bytes(baseURI).length > 0 ? 
