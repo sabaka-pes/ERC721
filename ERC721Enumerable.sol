@@ -11,7 +11,7 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
     mapping(uint => uint) private _ownedTokensIndex;
 
     function totalSupply() public view returns(uint) {
-        _allTokens.length;
+        return _allTokens.length;
     }
 
     function tokenByIndex(uint index) public view returns(uint) {
