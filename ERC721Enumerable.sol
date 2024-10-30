@@ -26,6 +26,11 @@ abstract contract ERC721Enumerable is ERC721, IERC721Enumerable {
         return _ownedTokens[owner][index];
     }
 
+    function supportInterface(bytes4 interfaceId) public view virtual override(ERC721) returns(bool) {
+        return interfaceId == type(IERC721Enumerable).interfaceId || 
+            super.supportsInterface(interfaceId);
+    }
+
     function _beforeTokenTransfer(address from, address to, uint tokenId) internal virtual override {
         super._beforeTokenTransfer(from, to, tokenId);
 
