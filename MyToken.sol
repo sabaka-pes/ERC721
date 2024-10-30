@@ -17,6 +17,8 @@ contract MyToken is ERC721 {
         require(owner == msg.sender, "not an owner");
 
         _safeMint(to, currentTokenId);
+        _setTokenURI(currentTokenId, tokenId);
+        
         currentTokenId++;
     }
 
