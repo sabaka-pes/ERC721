@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./ERC721.sol";
 
-contract ERC721URIStorage is ERC721 {
+abstract contract ERC721URIStorage is ERC721 {
     mapping (uint => string) private _tokenURIs;
 
     function tokenURI(uint tokenId) public view virtual override _requireMinted(tokenId) returns(string memory) {
